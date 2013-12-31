@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="drawing.js"></script>
+    <script src="game.js"></script>
+</head>
+<body>
+    <canvas id="cv" width="800" height="600" tabindex="1"></canvas>
+    <script>
+        var canvas = document.getElementById('cv');
+        var context = canvas.getContext('2d');
+        var screen = new Screen(canvas, context);
+
+        var game = new Game(screen);
+        var scene = new Scene();
+        scene.queue.push({ command: 'clear' });
+        scene.queue.push({ command: 'putImage', argument: 'background1.png' });
+        scene.queue.push({ command: 'wait', argument: '3000' });
+        scene.queue.push({ command: 'putText', argument: 'Você acorda num campo florido cercado de peôneas ao som das abelinha bizuzando no seu ovido.' });
+        scene.queue.push({ command: 'readKey' });
+        scene.queue.push({ command: 'putImage', argument: { image: 'jamelao.jpg', x: 250, y: 200, scalex: 0.5, scaley: 0.5 } });
+        scene.queue.push({ command: 'putText', argument: 'Um jamelão selvagem aparece.' });
+        scene.queue.push({ command: 'readKey' });
+        scene.queue.push({ command: 'askOptions', argument: { text: 'Você...', options: [{ text: 'Luta', skipTo: 23 }, { text: 'Corre', skipTo: 99 }] } });
+
+        game.scenes[0] = scene;
+
+        scene = new Scene();
+        scene.queue.push({ command: 'clear' });
+        scene.queue.push({ command: 'putImage', argument: 'background1.png' });
+        scene.queue.push({ command: 'putImage', argument: { image: 'jamelao-triste.jpg', x: 250, y: 200, scalex: 0.5, scaley: 0.5 } });
+        scene.queue.push({ command: 'putText', argument: 'Você reage de forma agressiva, buscando um confronto, e fere os sentimentos do jamelão, que desaba em choro.' });
+        scene.queue.push({ command: 'readKey' });
+        scene.queue.push({ command: 'putText', argument: 'Você é uma pessoa má e o jogo acabou pra você.' });
+        scene.queue.push({ command: 'readKey' });
+        scene.queue.push({ command: 'jump', argument: 0 });
+
+        game.scenes[23] = scene;
+
+        scene = new Scene();
+        scene.queue.push({ command: 'clear' });
+        scene.queue.push({ command: 'putImage', argument: 'background1.png' });
+        scene.queue.push({ command: 'putImage', argument: { image: 'jamelao-bully.jpg', x: 250, y: 200, scalex: 0.5, scaley: 0.5 }});
+        scene.queue.push({ command: 'putText', argument: 'Você corre, mas o jamelão te alcança e te dá um chá de cueca. Todos rirão de você para sempre.' });
+        scene.queue.push({ command: 'readKey' });
+        scene.queue.push({ command: 'putText', argument: 'Você é uma piada e seu jogo acaba aqui.' });
+        scene.queue.push({ command: 'readKey' });
+        scene.queue.push({ command: 'jump', argument: 0 });
+
+        game.scenes[99] = scene;
+
+        game.play();
+        
+        //screen.putImage('background1.png', 0, 0);
+
+        //setTimeout(function () {
+        //    screen.putImage('jamelao.jpg', 250, 200, 0.5, 0.5);
+        //    screen.textBox.show();
+        //    screen.textBox.putText('A wild jamelão appears.');
+        //}, 3000);
+        canvas.focus();
+    </script>
+</body>
+</html>

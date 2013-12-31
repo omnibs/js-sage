@@ -1,0 +1,31 @@
+cena 0
+fundo: background1.png
+
+Voce acorda num calabouço fedido e umido.
+
+...
+
+imagem: jamelao.jpg
+
+Um jamelão selvagem aparece.
+
+Opcao1: Lutar. -> 99
+Opcao2: Correr. -> 23
+
+cena 99
+imagem: jamelao-triste.jpg
+
+Você reage de forma agressiva, buscando um confronto, e fere os sentimentos do jamelão, que desaba em choro.
+
+...
+
+Game over. Você é uma pessoa má. -> 0
+
+cena 23
+imagem: jamelao-bully.jpg
+
+Você corre, mas o jamelão te alcança e te dá um chá de cueca. Todos rirão de você para sempre.
+
+...
+
+Game over. Você é uma piada. -> 0
